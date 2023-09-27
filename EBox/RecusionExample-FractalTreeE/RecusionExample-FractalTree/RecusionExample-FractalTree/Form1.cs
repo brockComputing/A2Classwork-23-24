@@ -33,7 +33,6 @@ namespace RecusionExample_FractalTree
 
         private void SimpleTree(PaintEventArgs e)
         {
-            
             float len = 300;
             e.Graphics.TranslateTransform(this.Width / 2, this.Height);
             Branch(e, len, Color.BlueViolet);
@@ -44,7 +43,8 @@ namespace RecusionExample_FractalTree
         {
             float theata;
             Pen pen = new Pen(Brushes.LimeGreen);
-            pen.Color = treeColor;
+            //pen.Color = treeColor;
+            //pen.Color = Color.FromArgb(255,rnd.Next(255), rnd.Next(255), rnd.Next(255));
             pen.Width = len * 1 / 20;
             GraphicsState graphicsState;
             e.Graphics.DrawLine(pen, 0, 0, 0, -len);
@@ -57,13 +57,11 @@ namespace RecusionExample_FractalTree
                 graphicsState = e.Graphics.Save();
                 theata = rnd.Next(0, 60);
                 e.Graphics.RotateTransform(theata);
-                System.Threading.Thread.Sleep(500);
                 Branch(e, len, treeColor);
                 e.Graphics.Restore(graphicsState);
                 graphicsState = e.Graphics.Save();
                 theata = rnd.Next(10, 60);
                 e.Graphics.RotateTransform(-theata);
-                System.Threading.Thread.Sleep(500);
                 Branch(e, len, treeColor);
                 e.Graphics.Restore(graphicsState);
 
