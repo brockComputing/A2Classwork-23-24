@@ -20,15 +20,24 @@ namespace B_Box
             }
             Console.WriteLine(num);
         }
+        static int[] items = new int[] { 0, 4, 5, 8, 11, 15, 19, 21, 28, 33 };
+        static void ProcA(int number, int entry)
+        {
+            Console.WriteLine("entry -" + entry);
+            if (number != items[entry])
+            {
+                ProcA(number, entry + 1);
+            }
+            else
+            {
+                Console.WriteLine("output " + entry);
+            }
+        }
+
         static void Main(string[] args)
         {
-            PrintList(10);
-            Console.WriteLine("finished");
-            int x = 99;
-            Fred();
-            Console.WriteLine(x);
+            ProcA(11, 1);
             Console.ReadLine();
-
         }
 
         private static void Fred()

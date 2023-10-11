@@ -13,6 +13,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EBox", "EBox\EBox.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecusionExample-FractalTreeE", "fracTrees\E\RecusionExample-FractalTree\RecusionExample-FractalTree\RecusionExample-FractalTree\RecusionExample-FractalTreeE.csproj", "{6C71A568-7269-4380-A492-2DD8CDB2C19D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecusionExample-FractalTreeB", "fracTrees\B\RecusionExample-FractalTreeB\RecusionExample-FractalTree\RecusionExample-FractalTree\RecusionExample-FractalTreeB.csproj", "{D91060A4-9E6E-4F85-930F-CF83A6C0F3A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecusionExample-FractalTreeA", "fracTrees\A\RecusionExample-FractalTree\RecusionExample-FractalTree\RecusionExample-FractalTreeA.csproj", "{0D44D52E-C282-4A1E-A52C-32ABC60BEEC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueExample", "QueueExample\QueueExample.csproj", "{DA948F59-EAC7-4EDB-AD14-6A0C0CC7F61F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserControlExample", "UserControlExample\UserControlExample.csproj", "{B39F9A2E-6F3E-47FE-B69C-72594574A6C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +47,22 @@ Global
 		{6C71A568-7269-4380-A492-2DD8CDB2C19D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C71A568-7269-4380-A492-2DD8CDB2C19D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C71A568-7269-4380-A492-2DD8CDB2C19D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D91060A4-9E6E-4F85-930F-CF83A6C0F3A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D91060A4-9E6E-4F85-930F-CF83A6C0F3A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D91060A4-9E6E-4F85-930F-CF83A6C0F3A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D91060A4-9E6E-4F85-930F-CF83A6C0F3A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D44D52E-C282-4A1E-A52C-32ABC60BEEC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D44D52E-C282-4A1E-A52C-32ABC60BEEC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D44D52E-C282-4A1E-A52C-32ABC60BEEC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D44D52E-C282-4A1E-A52C-32ABC60BEEC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA948F59-EAC7-4EDB-AD14-6A0C0CC7F61F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA948F59-EAC7-4EDB-AD14-6A0C0CC7F61F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA948F59-EAC7-4EDB-AD14-6A0C0CC7F61F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA948F59-EAC7-4EDB-AD14-6A0C0CC7F61F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B39F9A2E-6F3E-47FE-B69C-72594574A6C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B39F9A2E-6F3E-47FE-B69C-72594574A6C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B39F9A2E-6F3E-47FE-B69C-72594574A6C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B39F9A2E-6F3E-47FE-B69C-72594574A6C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
