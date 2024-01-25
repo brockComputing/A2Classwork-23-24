@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SymbolPuzzle", "SymbolPuzzl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "restAPI", "restAPI\restAPI.csproj", "{2EF78E91-53FF-4B53-BACD-FECD1FF69BF0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "restAPIdotNetCore", "restAPIdotNetCore\restAPIdotNetCore.csproj", "{F80B7F93-D993-49C8-AC7C-D95CC21AFC9F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{2EF78E91-53FF-4B53-BACD-FECD1FF69BF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2EF78E91-53FF-4B53-BACD-FECD1FF69BF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2EF78E91-53FF-4B53-BACD-FECD1FF69BF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F80B7F93-D993-49C8-AC7C-D95CC21AFC9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F80B7F93-D993-49C8-AC7C-D95CC21AFC9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F80B7F93-D993-49C8-AC7C-D95CC21AFC9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F80B7F93-D993-49C8-AC7C-D95CC21AFC9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
