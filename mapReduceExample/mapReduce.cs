@@ -14,7 +14,7 @@ class mapReduce
 
         // Map step: Square each number
         //var mappedResults = numbers.Select(num => num * num);
-        var mappedResults = Square(numbers);
+        List<int> mappedResults = Square(numbers);
         // Reduce step: Sum the squared values
         int sumOfSquares = mappedResults.Sum();
 
