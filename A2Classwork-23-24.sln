@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SymbolPuzzle", "SymbolPuzzl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "restAPI", "restAPI\restAPI.csproj", "{2EF78E91-53FF-4B53-BACD-FECD1FF69BF0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mapReduceExample", "mapReduceExample\mapReduceExample.csproj", "{84594728-82DB-4CF6-8221-D93659DE9A23}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{2EF78E91-53FF-4B53-BACD-FECD1FF69BF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2EF78E91-53FF-4B53-BACD-FECD1FF69BF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2EF78E91-53FF-4B53-BACD-FECD1FF69BF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84594728-82DB-4CF6-8221-D93659DE9A23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84594728-82DB-4CF6-8221-D93659DE9A23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84594728-82DB-4CF6-8221-D93659DE9A23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84594728-82DB-4CF6-8221-D93659DE9A23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
