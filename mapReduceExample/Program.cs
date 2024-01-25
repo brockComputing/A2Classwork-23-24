@@ -9,7 +9,7 @@ class Program
 {
     static void Main()
     {
-        // Sample input data (list of numbers)
+        // Sample input data (list of numbers)df
         List<int> numbers = new List<int> { 1, 2, 3, 4, 5 };
 
         // Map step: Square each number
