@@ -14,7 +14,7 @@ class Program
 
         // Map step: Square each number
         //var mappedResults = numbers.Select(num => num * num);
-        var mappedResults = Square(numbers); // not immutable.
+        var mappedResults = Square(numbers);
         // Reduce step: Sum the squared values
         int sumOfSquares = mappedResults.Sum();
 
@@ -37,10 +37,11 @@ class Program
 
     private static List<int> Square(List<int> numbers)
     {
+        List<int> result = new List<int>();
         for (int i = 0; i < numbers.Count; i++)
         {
-            numbers[i] = numbers[i] * numbers[i];
+            result.Add(numbers[i] * numbers[i]);
         }
-        return numbers;
+        return result;
     }
 }
