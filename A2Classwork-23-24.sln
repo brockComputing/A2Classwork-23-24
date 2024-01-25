@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "restAPI", "restAPI\restAPI.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "restAPIdotNetCore", "restAPIdotNetCore\restAPIdotNetCore.csproj", "{F80B7F93-D993-49C8-AC7C-D95CC21AFC9F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mapReduceExample", "mapReduceExample\mapReduceExample.csproj", "{84594728-82DB-4CF6-8221-D93659DE9A23}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{F80B7F93-D993-49C8-AC7C-D95CC21AFC9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F80B7F93-D993-49C8-AC7C-D95CC21AFC9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F80B7F93-D993-49C8-AC7C-D95CC21AFC9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84594728-82DB-4CF6-8221-D93659DE9A23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84594728-82DB-4CF6-8221-D93659DE9A23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84594728-82DB-4CF6-8221-D93659DE9A23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84594728-82DB-4CF6-8221-D93659DE9A23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

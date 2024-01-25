@@ -5,7 +5,7 @@ using System.Runtime.Remoting.Contexts;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-class Program
+class mapReduce
 {
     static void Main()
     {
