@@ -25,9 +25,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SymbolPuzzle", "SymbolPuzzl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "restAPI", "restAPI\restAPI.csproj", "{2EF78E91-53FF-4B53-BACD-FECD1FF69BF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "restAPIdotNetCore", "restAPIdotNetCore\restAPIdotNetCore.csproj", "{F80B7F93-D993-49C8-AC7C-D95CC21AFC9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "restAPIdotNetCore", "restAPIdotNetCore\restAPIdotNetCore.csproj", "{F80B7F93-D993-49C8-AC7C-D95CC21AFC9F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mapReduceExample", "mapReduceExample\mapReduceExample.csproj", "{84594728-82DB-4CF6-8221-D93659DE9A23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SymbolPuzzleClassDiagram", "SymbolPuzzleScratch\SymbolPuzzleClassDiagram.csproj", "{2B0884B9-2115-4B3C-A044-4A7DC9983C4E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,10 @@ Global
 		{84594728-82DB-4CF6-8221-D93659DE9A23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84594728-82DB-4CF6-8221-D93659DE9A23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84594728-82DB-4CF6-8221-D93659DE9A23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B0884B9-2115-4B3C-A044-4A7DC9983C4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B0884B9-2115-4B3C-A044-4A7DC9983C4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B0884B9-2115-4B3C-A044-4A7DC9983C4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B0884B9-2115-4B3C-A044-4A7DC9983C4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
