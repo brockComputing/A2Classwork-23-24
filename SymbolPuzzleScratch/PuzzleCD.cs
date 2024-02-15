@@ -23,14 +23,14 @@ namespace Puzzle
             {
                 Console.Write("Press Enter to start a standard puzzle or enter name of file to load: ");
                 string Filename = Console.ReadLine();
-                Puzzle MyPuzzle;
+                PuzzleCD MyPuzzle;
                 if (Filename.Length > 0)
                 {
-                    MyPuzzle = new Puzzle(Filename + ".txt");
+                    MyPuzzle = new PuzzleCD(Filename + ".txt");
                 }
                 else
                 {
-                    MyPuzzle = new Puzzle(8, Convert.ToInt32(8 * 8 * 0.6));
+                    MyPuzzle = new PuzzleCD(8, Convert.ToInt32(8 * 8 * 0.6));
                 }
                 Score = MyPuzzle.AttemptPuzzle();
                 Console.WriteLine("Puzzle finished. Your score was: " + Score);
@@ -41,7 +41,7 @@ namespace Puzzle
         }
 
     }
-    class Puzzle
+    class PuzzleCD
     {
         private int Score;
         private int SymbolsLeft;
@@ -51,7 +51,7 @@ namespace Puzzle
         private List<string> AllowedSymbols;
         static Random Rng = new Random();
 
-        public Puzzle(string Filename)
+        public PuzzleCD(string Filename)
         {
             Grid = new List<Cell>();
             AllowedPatterns = new List<Pattern>();
@@ -59,7 +59,7 @@ namespace Puzzle
             LoadPuzzle(Filename);
         }
 
-        public Puzzle(int Size, int StartSymbols)
+        public PuzzleCD(int Size, int StartSymbols)
         {
             Score = 0;
             SymbolsLeft = StartSymbols;
