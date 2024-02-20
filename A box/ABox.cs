@@ -20,6 +20,9 @@ namespace StatefulVsStateless
 
         static void Main(string[] args)
         {
+            string test = @"hello's";
+            test = test.Replace(@"'", @"''");
+            Console.WriteLine(test);
             Console.WriteLine(AddOneStateful());
             Console.WriteLine(AddOneStateless(3));
             Console.ReadLine();
