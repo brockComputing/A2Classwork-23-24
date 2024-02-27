@@ -87,6 +87,10 @@
 //                Pattern TPattern = new Pattern("T", "TTT**T**T");
 //                AllowedPatterns.Add(TPattern);
 //                AllowedSymbols.Add("T");
+//                //change
+//                Pattern CPattern = new Pattern("C", "CCC*CCCC*");
+//                AllowedPatterns.Add(CPattern);
+//                AllowedSymbols.Add("C");    
 //            }
 
 //            private void LoadPuzzle(string Filename)
