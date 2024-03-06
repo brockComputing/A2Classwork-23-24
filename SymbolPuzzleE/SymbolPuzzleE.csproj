@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Q1E.cs" />
+    <Compile Include="Q2E.cs" />
     <Compile Include="SPE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
