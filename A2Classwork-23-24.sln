@@ -47,6 +47,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PuzzleB", "PuzzleB", "{2B30
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PuzzleE", "PuzzleE", "{07A1C4A6-30C0-45B5-B2DA-1DB4103F3EEB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetCell", "GetCell\GetCell.csproj", "{1E2FD290-B7C9-4277-8865-D45BB034AB71}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -121,6 +123,10 @@ Global
 		{BC2C6BC9-A384-4E08-A907-7F67F71F858F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC2C6BC9-A384-4E08-A907-7F67F71F858F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC2C6BC9-A384-4E08-A907-7F67F71F858F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E2FD290-B7C9-4277-8865-D45BB034AB71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E2FD290-B7C9-4277-8865-D45BB034AB71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E2FD290-B7C9-4277-8865-D45BB034AB71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E2FD290-B7C9-4277-8865-D45BB034AB71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

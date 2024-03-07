@@ -87,6 +87,10 @@
 //                Pattern TPattern = new Pattern("T", "TTT**T**T");
 //                AllowedPatterns.Add(TPattern);
 //                AllowedSymbols.Add("T");
+//                Pattern CPattern = new Pattern("C", "CCC*CCCC*");
+//                AllowedPatterns.Add(CPattern);
+//                AllowedSymbols.Add("C");
+
 //            }
 
 //            private void LoadPuzzle(string Filename)
@@ -208,38 +212,21 @@
 //                    {
 //                        try
 //                        {
-//                            List<Cell> PatternList = new List<Cell>(); //new
 //                            string PatternString = "";
-//                            //new
-//                            PatternList.Add(GetCell(StartRow, StartColumn)); // change the ones below.
-//                            PatternList.Add( GetCell(StartRow, StartColumn + 1));
-//                            PatternList.Add( GetCell(StartRow, StartColumn + 2));
-//                            PatternList.Add( GetCell(StartRow - 1, StartColumn + 2));
-//                            PatternList.Add( GetCell(StartRow - 2, StartColumn + 2));
-//                            PatternList.Add(GetCell(StartRow - 2, StartColumn + 1));
-//                            PatternList.Add( GetCell(StartRow - 2, StartColumn));
-//                            PatternList.Add( GetCell(StartRow - 1, StartColumn));
-//                            PatternList.Add(GetCell(StartRow - 1, StartColumn + 1));
-//                            foreach (var item in PatternList) // gets the string as before
-//                            {
-//                                PatternString += item.GetSymbol();
-//                            }
-//                            //end new 
+//                            PatternString += GetCell(StartRow, StartColumn).GetSymbol();
+//                            PatternString += GetCell(StartRow, StartColumn + 1).GetSymbol();
+//                            PatternString += GetCell(StartRow, StartColumn + 2).GetSymbol();
+//                            PatternString += GetCell(StartRow - 1, StartColumn + 2).GetSymbol();
+//                            PatternString += GetCell(StartRow - 2, StartColumn + 2).GetSymbol();
+//                            PatternString += GetCell(StartRow - 2, StartColumn + 1).GetSymbol();
+//                            PatternString += GetCell(StartRow - 2, StartColumn).GetSymbol();
+//                            PatternString += GetCell(StartRow - 1, StartColumn).GetSymbol();
+//                            PatternString += GetCell(StartRow - 1, StartColumn + 1).GetSymbol();
 //                            foreach (var P in AllowedPatterns)
 //                            {
 //                                string CurrentSymbol = GetCell(Row, Column).GetSymbol();
 //                                if (P.MatchesPattern(PatternString, CurrentSymbol))
 //                                {
-//                                    //new
-//                                    foreach (Cell cell in PatternList)
-//                                    {
-//                                        if (cell.GetSymbol() != "@" && !cell.CheckSymbolAllowed(CurrentSymbol))
-//                                        {
-//                                            Console.WriteLine("you cannot overlap positions");
-//                                            return 0;
-//                                        }
-//                                    }
-//                                    //end new
 //                                    GetCell(StartRow, StartColumn).AddToNotAllowedSymbols(CurrentSymbol);
 //                                    GetCell(StartRow, StartColumn + 1).AddToNotAllowedSymbols(CurrentSymbol);
 //                                    GetCell(StartRow, StartColumn + 2).AddToNotAllowedSymbols(CurrentSymbol);

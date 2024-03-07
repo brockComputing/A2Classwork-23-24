@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{700653D9-60D4-4D4A-805A-25F851800243}</ProjectGuid>
+    <ProjectGuid>{1E2FD290-B7C9-4277-8865-D45BB034AB71}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>SymbolPuzzleB</RootNamespace>
-    <AssemblyName>SymbolPuzzleB</AssemblyName>
+    <RootNamespace>GetCell</RootNamespace>
+    <AssemblyName>GetCell</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,9 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Q1B.cs" />
-    <Compile Include="Q2B.cs" />
-    <Compile Include="SPB.cs" />
+    <Compile Include="GetCells.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
