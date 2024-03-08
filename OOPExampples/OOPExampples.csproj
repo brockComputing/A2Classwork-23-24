@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{700653D9-60D4-4D4A-805A-25F851800243}</ProjectGuid>
+    <ProjectGuid>{17F93BCE-869B-4F6D-ADE5-8FDEFDBAFA07}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>SymbolPuzzleB</RootNamespace>
-    <AssemblyName>SymbolPuzzleB</AssemblyName>
+    <RootNamespace>OOPExampples</RootNamespace>
+    <AssemblyName>OOPExampples</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,10 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Q1B.cs" />
-    <Compile Include="Q2B.cs" />
-    <Compile Include="Q3B.cs" />
-    <Compile Include="SPB.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

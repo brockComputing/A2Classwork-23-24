@@ -208,13 +208,11 @@ namespace Puzzle
                     {
                         try
                         {
-                            string PatternString = "";
-                            // change 
                             if (StartColumn + 2 > GridSize || StartColumn < 1)
                             {
                                 break;
                             }
-                            // end change
+                            string PatternString = "";
                             PatternString += GetCell(StartRow, StartColumn).GetSymbol();
                             PatternString += GetCell(StartRow, StartColumn + 1).GetSymbol();
                             PatternString += GetCell(StartRow, StartColumn + 2).GetSymbol();
