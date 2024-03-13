@@ -46,6 +46,7 @@
     <Compile Include="Q1E.cs" />
     <Compile Include="Q2E.cs" />
     <Compile Include="Q3E.cs" />
+    <Compile Include="Q4E.cs" />
     <Compile Include="SPE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

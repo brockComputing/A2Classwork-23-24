@@ -22,13 +22,13 @@ namespace OOPExampples
             List<Student> studentList = new List<Student>();
             for (int i = 0; i < 4; i++)
             {
+                string test;
                 Student aStudent = new Student();
-                string teststr = "hello";
                 aStudent.FirstName = "Geoff-" + i;
                 studentList.Add(aStudent);
-                teststr = "bye";
+                test = "hello";
             }
-
+            
 
             foreach (var item in studentList)
             {
