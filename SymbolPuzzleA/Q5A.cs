@@ -144,6 +144,7 @@ namespace Puzzle
                 {
                     DisplayPuzzle();
                     Console.WriteLine("Current score: " + Score);
+                    Console.WriteLine($"Number of symbols remaining {SymbolsLeft}"); // change
                     bool Valid = false;
                     int Row = -1;
                     while (!Valid)
@@ -172,21 +173,40 @@ namespace Puzzle
                         {
                         }
                     }
-                    string Symbol = GetSymbolFromUser();
-                    SymbolsLeft -= 1;
-                    Cell CurrentCell = GetCell(Row, Column);
-                    if (CurrentCell.CheckSymbolAllowed(Symbol))
+                    //change
+                    Console.WriteLine("Do you want to remove a cell");
+                    string getAns = Console.ReadLine();
+                    if (getAns == "y") // removing
                     {
-                        CurrentCell.ChangeSymbolInCell(Symbol);
-                        int AmountToAddToScore = CheckForMatchWithPattern(Row, Column);
-                        if (AmountToAddToScore > 0)
+                        Cell currentCell = GetCell(Row, Column);
+                        if (currentCell.CheckSymbolAllowed(currentCell.GetSymbol()) == false)
                         {
-                            Score += AmountToAddToScore;
+                            Console.WriteLine("it is already part of a pattern");
+                        }
+                        else if (currentCell.GetSymbol() != "@")
+                        {
+                            SymbolsLeft++;
+                            currentCell.ChangeSymbolInCell("");
                         }
                     }
-                    if (SymbolsLeft == 0)
-                    {
-                        Finished = true;
+                    else // end change
+                    { // existing changing the cell
+                        string Symbol = GetSymbolFromUser();
+                        SymbolsLeft -= 1;
+                        Cell CurrentCell = GetCell(Row, Column);
+                        if (CurrentCell.CheckSymbolAllowed(Symbol))
+                        {
+                            CurrentCell.ChangeSymbolInCell(Symbol);
+                            int AmountToAddToScore = CheckForMatchWithPattern(Row, Column);
+                            if (AmountToAddToScore > 0)
+                            {
+                                Score += AmountToAddToScore;
+                            }
+                        }
+                        if (SymbolsLeft == 0)
+                        {
+                            Finished = true;
+                        }
                     }
                 }
                 Console.WriteLine();
