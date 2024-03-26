@@ -48,6 +48,7 @@
     <Compile Include="Q3B.cs" />
     <Compile Include="Q4B.cs" />
     <Compile Include="Q5B.cs" />
+    <Compile Include="Q6B.cs" />
     <Compile Include="SPB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

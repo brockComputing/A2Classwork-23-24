@@ -189,12 +189,13 @@ namespace Puzzle
                         Finished = true;
                     }
                     // change
-                    Console.WriteLine("do you want to save the current game (y/n)");
-                    string choice = Console.ReadLine();
-                    if (choice == "y")
+                    Console.WriteLine("Do you want to save the game state(y/n)");
+                    string ans = Console.ReadLine();
+                    if (ans == "y")
                     {
                         SavePuzzle();
                     }
+                    // end change
                 }
                 Console.WriteLine();
                 DisplayPuzzle();
@@ -202,32 +203,31 @@ namespace Puzzle
                 return Score;
             }
 
-            private void SavePuzzle() //change
+            private void SavePuzzle()
             {
                 string fileName = "save.txt";
-                using (StreamWriter writer = new StreamWriter(fileName))
+                using (StreamWriter writer = new StreamWriter(fileName)) // number of allowed symbols
                 {
-                    writer.WriteLine(AllowedSymbols.Count.ToString());// number of allowed symbols
-                    foreach (var item in AllowedSymbols) // the allowed symbols
+                    writer.WriteLine(AllowedSymbols.Count);
+                    foreach (var symbol in AllowedSymbols) // the allowed symbols
                     {
-                        writer.WriteLine(item);
+                        writer.WriteLine(symbol);
                     }
-                    writer.WriteLine(AllowedPatterns.Count.ToString()); // number of allowed patterns
-                    foreach (var item in AllowedPatterns) // the allowed patterns
+                    // number of allowed patterns
+                    writer.WriteLine(AllowedPatterns.Count);
+                    // allowed patterns
+                    foreach (var pattern in AllowedPatterns)
                     {
-                        writer.WriteLine(item.GetPatternSequence());
+                        writer.WriteLine(pattern.GetPatternSequence()); 
                     }
-                    writer.WriteLine(GridSize.ToString()); // the gridsize
-                    string cellString = "";
-                    foreach (Cell c in Grid) // store cell symbol followed by NotAllowed symbols. Q,Q,T
+                    writer.WriteLine(GridSize);
+                    // the cells
+                    string cellLine = "";
+                    foreach (var cell in Grid)
                     {
-                        cellString = c.GetSymbolForSave() + ",";
-                        cellString = cellString + c.GetSymbolsNotAllowedForSave();
-                        writer.WriteLine(cellString);
-                        cellString = "";
+                        cellLine = cell.GetSymbolForSave() + ",";
+
                     }
-                    writer.WriteLine(Score.ToString());
-                    writer.WriteLine(SymbolsLeft.ToString());
                 }
             }
 
@@ -373,21 +373,15 @@ namespace Puzzle
                 Symbol = "";
                 SymbolsNotAllowed = new List<string>();
             }
-
             public virtual string GetSymbolsNotAllowedForSave()
             {
-                string notAllowedListWithCommas = "";
-                foreach (var symbol in SymbolsNotAllowed)
-                {
-                    notAllowedListWithCommas = symbol.ToString() + ",";
-                }
-                // remove the last comma
-                if (notAllowedListWithCommas.Length > 0)
-                {
-                    notAllowedListWithCommas = notAllowedListWithCommas.Remove(notAllowedListWithCommas.Length - 1);
-                }
-                return notAllowedListWithCommas;
+                // return SymbolsNotAllowed seperated by commas
+                string value = "";
+
+
+                return value;
             }
+            
             public virtual string GetSymbolForSave()
             {
                 return Symbol;
