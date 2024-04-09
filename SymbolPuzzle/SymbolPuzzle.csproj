@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mock3.1.cs" />
+    <Compile Include="MockQ4.cs" />
+    <Compile Include="MockQ5.cs" />
     <Compile Include="Q1.cs" />
     <Compile Include="Puzzle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
