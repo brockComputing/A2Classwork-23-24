@@ -218,7 +218,7 @@ namespace Puzzle
                     // allowed patterns
                     foreach (var pattern in AllowedPatterns)
                     {
-                        writer.WriteLine(pattern.GetPatternSequence());
+                        writer.WriteLine(pattern.GetPatternSequence()); 
                     }
                     writer.WriteLine(GridSize);
                     // the cells
@@ -226,12 +226,8 @@ namespace Puzzle
                     foreach (var cell in Grid)
                     {
                         cellLine = cell.GetSymbolForSave() + ",";
-                        cellLine += cell.GetSymbolsNotAllowedForSave();
-                        writer.WriteLine(cellLine);
-                        cellLine = "";
+
                     }
-                    writer.WriteLine(Score.ToString());
-                    writer.WriteLine(SymbolsLeft.ToString());
                 }
             }
 
@@ -381,17 +377,11 @@ namespace Puzzle
             {
                 // return SymbolsNotAllowed seperated by commas
                 string value = "";
-                foreach (var symbol in SymbolsNotAllowed)
-                {
-                    value = value + symbol + ",";
-                }
-                if (value.Length > 0)
-                {
-                    value = value.Remove(value.Length - 1); // removes the last comma
-                }
+
+
                 return value;
             }
-
+            
             public virtual string GetSymbolForSave()
             {
                 return Symbol;
