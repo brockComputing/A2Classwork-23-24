@@ -381,7 +381,7 @@ namespace Puzzle
                 {
                     notAllowedListWithCommas = symbol.ToString() + ",";
                 }
-                // remove the last comma
+                // remove the last comma ll
                 if (notAllowedListWithCommas.Length > 0)
                 {
                     notAllowedListWithCommas = notAllowedListWithCommas.Remove(notAllowedListWithCommas.Length - 1);
