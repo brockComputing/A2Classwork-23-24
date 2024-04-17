@@ -6,8 +6,6 @@
 
 //using System;
 //using System.Collections.Generic;
-//using System.ComponentModel;
-//using System.Data;
 //using System.IO;
 //using System.Linq;
 
@@ -57,24 +55,6 @@
 //                AllowedPatterns = new List<Pattern>();
 //                AllowedSymbols = new List<string>();
 //                LoadPuzzle(Filename);
-//                AddRandomSuperCell();
-//            }
-
-//            private void AddRandomSuperCell()
-//            {
-//                SuperCell superCell = new SuperCell();
-//                superCell.ChangeSymbolInCell("T");
-//                bool OK = false;
-//                while (OK == false)
-//                {
-//                    int pos = Rng.Next(Grid.Count);
-//                    Cell cell = Grid[pos];
-//                    if (cell.IsEmpty())
-//                    {
-//                        OK = true;
-//                        Grid[pos] = superCell;
-//                    }
-//                }
 //            }
 
 //            public Puzzle(int Size, int StartSymbols)
@@ -96,7 +76,6 @@
 //                    }
 //                    Grid.Add(C);
 //                }
-//                AddRandomSuperCell();
 //                AllowedPatterns = new List<Pattern>();
 //                AllowedSymbols = new List<string>();
 //                Pattern QPattern = new Pattern("Q", "QQ**Q**QQ");
@@ -109,7 +88,32 @@
 //                AllowedPatterns.Add(TPattern);
 //                AllowedSymbols.Add("T");
 //            }
-
+//            // changes
+//            public void ReshuffleBlockedCells()
+//            {
+//                List<int> blockCellOrigingalPositons = new List<int>();
+//                for (int i = 0; i < Grid.Count; i++)
+//                {
+//                    if (Grid[i].GetSymbol() == "@")
+//                    {
+//                        blockCellOrigingalPositons.Add(i);
+//                        Grid[i] = new Cell(); // all are blanked out
+//                    }
+//                }
+//                int counter = blockCellOrigingalPositons.Count;
+//                for (int i = 0; i < counter; i++)
+//                {
+//                    int position;
+//                    do
+//                    {
+//                        position = Rng.Next(Grid.Count);
+//                    } while (Grid[position].IsEmpty() == false && 
+//                        !blockCellOrigingalPositons.Contains(position)) ;
+//                    // could leave out can't go back to a cell that did not contain a cell
+//                    Grid[position] = new BlockedCell();
+//                }
+//            }
+//            // end changes
 //            private void LoadPuzzle(string Filename)
 //            {
 //                try
@@ -203,33 +207,19 @@
 //                        if (AmountToAddToScore > 0)
 //                        {
 //                            Score += AmountToAddToScore;
+//                            ReshuffleBlockedCells();
 //                        }
 //                    }
 //                    if (SymbolsLeft == 0)
 //                    {
 //                        Finished = true;
 //                    }
-//                    // change
-//                    UpdateSuperCell();
 //                }
 //                Console.WriteLine();
 //                DisplayPuzzle();
 //                Console.WriteLine();
 //                return Score;
 //            }
-//            //change
-//            private void UpdateSuperCell()
-//            {
-//                //find the super cell.
-//                foreach (Cell item in Grid)
-//                {
-//                    if (Char.IsLower(Convert.ToChar(item.GetSymbol())))
-//                    {
-//                        item.UpdateCell();
-//                    }
-//                }
-//            }
-//            // end change
 
 //            private Cell GetCell(int Row, int Column)
 //            {
@@ -361,31 +351,6 @@
 //            {
 //                return PatternSequence;
 //            }
-//        }
-
-//        class SuperCell : Cell
-//        {
-//            public override void UpdateCell()
-//            {
-//                if (Symbol == "T")
-//                {
-//                    Symbol = "Q";
-//                }
-//                else if (Symbol == "Q")
-//                {
-//                    Symbol = "X";
-//                }
-//                else if (Symbol == "X")
-//                {
-//                    Symbol = "T";
-//                }
-//            }
-
-//            public override string GetSymbol()
-//            {
-//                return base.GetSymbol().ToLower();
-//            }
-
 //        }
 
 //        class Cell
