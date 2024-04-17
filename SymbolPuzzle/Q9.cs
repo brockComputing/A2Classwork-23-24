@@ -55,6 +55,20 @@
 //                AllowedPatterns = new List<Pattern>();
 //                AllowedSymbols = new List<string>();
 //                LoadPuzzle(Filename);
+//                AddDoublePointCells();
+//            }
+
+//            private void AddDoublePointCells()
+//            {
+//                for (int i = 0; i < 5; i++)
+//                {
+//                    int pos;
+//                    do
+//                    {
+//                        pos = Rng.Next(Grid.Count);
+//                    } while (Grid[pos].IsEmpty() == false) ;
+//                    Grid[pos] = new DoublePointsCell();
+//                }
 //            }
 
 //            public Puzzle(int Size, int StartSymbols)
@@ -87,6 +101,7 @@
 //                Pattern TPattern = new Pattern("T", "TTT**T**T");
 //                AllowedPatterns.Add(TPattern);
 //                AllowedSymbols.Add("T");
+//                AddDoublePointCells();
 //            }
 
 //            private void LoadPuzzle(string Filename)
@@ -188,25 +203,11 @@
 //                    {
 //                        Finished = true;
 //                    }
-//                    ShuffleRow(5);
 //                }
 //                Console.WriteLine();
 //                DisplayPuzzle();
 //                Console.WriteLine();
 //                return Score;
-//            }
-
-//            private void ShuffleRow(int rowNum)
-//            {
-//                // calculate the start and end points in grid
-//                int startIndex = (GridSize - rowNum) *GridSize + 1 - 1;
-//                int endIndex = (GridSize - rowNum) * GridSize + GridSize - 1;
-//                Cell first = GetCell(rowNum, 1);
-//                for (int i = startIndex; i < endIndex; i++)
-//                {
-//                    Grid[i] = Grid[i + 1];
-//                }
-//                Grid[endIndex] = first;
 //            }
 
 //            private Cell GetCell(int Row, int Column)
@@ -237,7 +238,13 @@
 //                                string CurrentSymbol = GetCell(Row, Column).GetSymbol();
 //                                if (P.MatchesPattern(PatternString, CurrentSymbol))
 //                                {
+//                                    bool doubleScorePresent = false;
+
 //                                    GetCell(StartRow, StartColumn).AddToNotAllowedSymbols(CurrentSymbol);
+//                                    if (GetCell(StartRow, StartColumn).IsDouble())
+//                                    {
+//                                        doubleScorePresent = true;
+//                                    } // and so on
 //                                    GetCell(StartRow, StartColumn + 1).AddToNotAllowedSymbols(CurrentSymbol);
 //                                    GetCell(StartRow, StartColumn + 2).AddToNotAllowedSymbols(CurrentSymbol);
 //                                    GetCell(StartRow - 1, StartColumn + 2).AddToNotAllowedSymbols(CurrentSymbol);
@@ -246,7 +253,16 @@
 //                                    GetCell(StartRow - 2, StartColumn).AddToNotAllowedSymbols(CurrentSymbol);
 //                                    GetCell(StartRow - 1, StartColumn).AddToNotAllowedSymbols(CurrentSymbol);
 //                                    GetCell(StartRow - 1, StartColumn + 1).AddToNotAllowedSymbols(CurrentSymbol);
-//                                    return 10;
+//                                    if (doubleScorePresent)
+//                                    {
+//                                        return 20;
+//                                    }
+//                                    else
+//                                    {
+//                                        return 10;
+//                                    }
+                                   
+
 //                                }
 //                            }
 //                        }
@@ -340,80 +356,95 @@
 //                return PatternSequence;
 //            }
 //        }
-
-//        class Cell
+//        class DoublePointsCell : Cell
 //        {
-//            protected string Symbol;
-//            private List<string> SymbolsNotAllowed;
-
-//            public Cell()
+//            public DoublePointsCell() : base()
 //            {
-//                Symbol = "";
-//                SymbolsNotAllowed = new List<string>();
+//                Symbol = "D";
 //            }
 
-//            public virtual string GetSymbol()
+//            public override bool IsDouble()
 //            {
-//                if (IsEmpty())
-//                {
-//                    return "-";
-//                }
-//                else
-//                {
-//                    return Symbol;
-//                }
-//            }
-
-//            public bool IsEmpty()
-//            {
-//                if (Symbol.Length == 0)
-//                {
-//                    return true;
-//                }
-//                else
-//                {
-//                    return false;
-//                }
-//            }
-
-//            public void ChangeSymbolInCell(string NewSymbol)
-//            {
-//                Symbol = NewSymbol;
-//            }
-
-//            public virtual bool CheckSymbolAllowed(string SymbolToCheck)
-//            {
-//                foreach (var Item in SymbolsNotAllowed)
-//                {
-//                    if (Item == SymbolToCheck)
-//                    {
-//                        return false;
-//                    }
-//                }
 //                return true;
 //            }
+//        }
+//        class Cell
+//    {
+//        protected string Symbol;
+//        private List<string> SymbolsNotAllowed;
 
-//            public virtual void AddToNotAllowedSymbols(string SymbolToAdd)
+//        public Cell()
+//        {
+//            Symbol = "";
+//            SymbolsNotAllowed = new List<string>();
+//        }
+//        public virtual bool IsDouble()
+//        {
+//            return false;
+//        }
+
+//        public virtual string GetSymbol()
+//        {
+//            if (IsEmpty())
 //            {
-//                SymbolsNotAllowed.Add(SymbolToAdd);
+//                return "-";
 //            }
-
-//            public virtual void UpdateCell()
+//            else
 //            {
+//                return Symbol;
 //            }
 //        }
 
-//        class BlockedCell : Cell
+//        public bool IsEmpty()
 //        {
-//            public BlockedCell() : base()
+//            if (Symbol.Length == 0)
 //            {
-//                Symbol = "@";
+//                return true;
 //            }
-
-//            public override bool CheckSymbolAllowed(string SymbolToCheck)
+//            else
 //            {
 //                return false;
 //            }
 //        }
+
+//        public void ChangeSymbolInCell(string NewSymbol)
+//        {
+//            Symbol = NewSymbol;
+//        }
+
+//        public virtual bool CheckSymbolAllowed(string SymbolToCheck)
+//        {
+//            foreach (var Item in SymbolsNotAllowed)
+//            {
+//                if (Item == SymbolToCheck)
+//                {
+//                    return false;
+//                }
+//            }
+//            return true;
+//        }
+
+//        public virtual void AddToNotAllowedSymbols(string SymbolToAdd)
+//        {
+//            SymbolsNotAllowed.Add(SymbolToAdd);
+//        }
+
+//        public virtual void UpdateCell()
+//        {
+//        }
 //    }
+
+//    class BlockedCell : Cell
+//    {
+//        public BlockedCell() : base()
+//        {
+//            Symbol = "@";
+//        }
+
+//        public override bool CheckSymbolAllowed(string SymbolToCheck)
+//        {
+//            return false;
+//        }
+//    }
+//}
 //}
