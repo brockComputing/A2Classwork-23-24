@@ -409,7 +409,7 @@ namespace Puzzle
             public virtual void AddToNotAllowedSymbols(string SymbolToAdd)
             {
                 SymbolsNotAllowed.Add(SymbolToAdd);
-                if (SymbolToAdd == Symbol) // it must be pattern
+                if (SymbolToAdd == Symbol && Symbol != "") // it must be pattern if loading from file you need this line
                 {
                     partOfPattern = true; 
                 }
