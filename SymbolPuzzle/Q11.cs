@@ -48,6 +48,7 @@
 //            private List<Cell> Grid;
 //            private List<Pattern> AllowedPatterns;
 //            private List<string> AllowedSymbols;
+//            private bool leverUsed;
 
 //            public Puzzle(string Filename)
 //            {
@@ -55,10 +56,12 @@
 //                AllowedPatterns = new List<Pattern>();
 //                AllowedSymbols = new List<string>();
 //                LoadPuzzle(Filename);
+//                leverUsed = false;
 //            }
 
 //            public Puzzle(int Size, int StartSymbols)
 //            {
+//                leverUsed = false;
 //                Score = 0;
 //                SymbolsLeft = StartSymbols;
 //                GridSize = Size;
@@ -144,7 +147,6 @@
 //                {
 //                    DisplayPuzzle();
 //                    Console.WriteLine("Current score: " + Score);
-//                    Console.WriteLine($"You have {SymbolsLeft} symbols left");
 //                    bool Valid = false;
 //                    int Row = -1;
 //                    while (!Valid)
@@ -154,11 +156,6 @@
 //                        {
 //                            Row = Convert.ToInt32(Console.ReadLine());
 //                            Valid = true;
-//                            if (Row < 1 || Row > GridSize) // change
-//                            {
-//                                Console.WriteLine("row out of range");
-//                                Valid = false;
-//                            }
 //                        }
 //                        catch
 //                        {
@@ -173,11 +170,6 @@
 //                        {
 //                            Column = Convert.ToInt32(Console.ReadLine());
 //                            Valid = true;
-//                            if (Column < 1 || Column > GridSize) // change
-//                            {
-//                                Console.WriteLine("column is out of range");
-//                                Valid = false;
-//                            }
 //                        }
 //                        catch
 //                        {
@@ -186,7 +178,7 @@
 //                    string Symbol = GetSymbolFromUser();
 //                    SymbolsLeft -= 1;
 //                    Cell CurrentCell = GetCell(Row, Column);
-//                    if (CurrentCell.CheckSymbolAllowed(Symbol) && CurrentCell.GetPartOfAPattern() == false)
+//                    if (CurrentCell.CheckSymbolAllowed(Symbol))
 //                    {
 //                        CurrentCell.ChangeSymbolInCell(Symbol);
 //                        int AmountToAddToScore = CheckForMatchWithPattern(Row, Column);
@@ -194,11 +186,6 @@
 //                        {
 //                            Score += AmountToAddToScore;
 //                        }
-//                    }
-//                    else
-//                    {
-//                        Console.WriteLine("current cell is part of a pattern");
-//                        SymbolsLeft++;
 //                    }
 //                    if (SymbolsLeft == 0)
 //                    {
@@ -248,6 +235,17 @@
 //                                    GetCell(StartRow - 2, StartColumn).AddToNotAllowedSymbols(CurrentSymbol);
 //                                    GetCell(StartRow - 1, StartColumn).AddToNotAllowedSymbols(CurrentSymbol);
 //                                    GetCell(StartRow - 1, StartColumn + 1).AddToNotAllowedSymbols(CurrentSymbol);
+//                                    if (leverUsed == false)
+//                                    {
+//                                        Console.WriteLine("Well done would you like to user the lever (y/n)");
+//                                        string ans = Console.ReadLine();
+//                                        if (ans.ToLower() == "y")
+//                                        {
+//                                            DoLever();
+//                                            leverUsed = true;
+//                                        }
+//                                    }
+
 //                                    return 10;
 //                                }
 //                            }
@@ -258,6 +256,28 @@
 //                    }
 //                }
 //                return 0;
+//            }
+
+//            private void DoLever()
+//            {
+//                Cell cell;
+//                do
+//                {
+
+//                    Console.WriteLine("enter the row of the blocked cell");
+//                    int row = Convert.ToInt32(Console.ReadLine());
+//                    Console.WriteLine("enter the col of the blocked cell");
+//                    int col = Convert.ToInt32(Console.ReadLine());
+//                    cell = GetCell(row, col);
+//                    if (cell.GetSymbol() != "@")
+//                    {
+//                        Console.WriteLine("This is not a blocked cell");
+//                    }
+//                    else
+//                    {
+//                        Grid[(GridSize - row) * GridSize + col - 1] = new Cell();
+//                    }
+//                } while (cell.GetSymbol() != "@");
 //            }
 
 //            private string GetSymbolFromUser()
@@ -347,13 +367,11 @@
 //        {
 //            protected string Symbol;
 //            private List<string> SymbolsNotAllowed;
-//            private bool partOfPattern;
 
 //            public Cell()
 //            {
 //                Symbol = "";
 //                SymbolsNotAllowed = new List<string>();
-//                partOfPattern = false;
 //            }
 
 //            public virtual string GetSymbol()
@@ -397,22 +415,9 @@
 //                return true;
 //            }
 
-//            public void SetAsPartOfPattern()
-//            {
-//                partOfPattern = true; // is this really needed?
-//            }
-//            public bool GetPartOfAPattern()
-//            {
-//                return partOfPattern;
-//            }
-
 //            public virtual void AddToNotAllowedSymbols(string SymbolToAdd)
 //            {
 //                SymbolsNotAllowed.Add(SymbolToAdd);
-//                if (SymbolToAdd == Symbol && Symbol != "") // it must be pattern if loading from file you need this line
-//                {
-//                    partOfPattern = true; 
-//                }
 //            }
 
 //            public virtual void UpdateCell()
