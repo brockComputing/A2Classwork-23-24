@@ -107,8 +107,8 @@ namespace Puzzle
                     do
                     {
                         position = Rng.Next(Grid.Count);
-                    } while (Grid[position].IsEmpty() == false &&
-                        !blockCellOrigingalPositons.Contains(position));
+                    } while (Grid[position].IsEmpty() == false ||
+                        blockCellOrigingalPositons.Contains(position));
                     // could leave out can't go back to a cell that did not contain a cell
                     Grid[position] = new BlockedCell();
                 }
