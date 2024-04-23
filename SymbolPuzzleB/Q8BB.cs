@@ -188,7 +188,7 @@ namespace Puzzle
                     {
                         Finished = true;
                     }
-                    ShuffleRow(5);
+                    ShuffleRow(4);
                 }
                 Console.WriteLine();
                 DisplayPuzzle();
@@ -198,15 +198,13 @@ namespace Puzzle
 
             private void ShuffleRow(int rowNum)
             {
-                // calculate the start and end points in grid
-                int startIndex = (GridSize - rowNum) * GridSize + 1 - 1;
-                int endIndex = (GridSize - rowNum) * GridSize + GridSize - 1;
-                Cell first = GetCell(rowNum, 1);
-                for (int i = startIndex; i < endIndex; i++)
+                int startIndex = (GridSize - rowNum ) * GridSize + 1 - 1; // need to work this out
+                int endIndex = (GridSize - rowNum) * GridSize + GridSize - 1; // need to work this out
+                Cell first = GetCell(rowNum, 0);
+                for (int i = startIndex; i < endIndex ; i++)
                 {
-                    Grid[i] = Grid[i + 1];
+                    // finish off tomorrow
                 }
-                Grid[endIndex] = first;
             }
 
             private Cell GetCell(int Row, int Column)

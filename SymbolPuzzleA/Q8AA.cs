@@ -188,7 +188,7 @@ namespace Puzzle
                     {
                         Finished = true;
                     }
-                    ShuffleRow(5);
+                    ShiftRow(5); // 5 means row 5
                 }
                 Console.WriteLine();
                 DisplayPuzzle();
@@ -196,17 +196,13 @@ namespace Puzzle
                 return Score;
             }
 
-            private void ShuffleRow(int rowNum)
+            private void ShiftRow(int rowNum)
             {
-                // calculate the start and end points in grid
-                int startIndex = (GridSize - rowNum) * GridSize + 1 - 1;
-                int endIndex = (GridSize - rowNum) * GridSize + GridSize - 1;
-                Cell first = GetCell(rowNum, 1);
-                for (int i = startIndex; i < endIndex; i++)
-                {
-                    Grid[i] = Grid[i + 1];
-                }
-                Grid[endIndex] = first;
+                // calulate the start and end positions of row
+                int startIndex = 0;
+                int endIndex = 0;
+                Cell firstCell = GetCell(rowNum, 1);
+                // shift cells 
             }
 
             private Cell GetCell(int Row, int Column)

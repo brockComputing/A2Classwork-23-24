@@ -50,6 +50,7 @@
     <Compile Include="Q5A.cs" />
     <Compile Include="Q6A.cs" />
     <Compile Include="Q8A.cs" />
+    <Compile Include="Q8AA.cs" />
     <Compile Include="SPA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

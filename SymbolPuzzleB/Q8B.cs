@@ -88,32 +88,7 @@
 //                AllowedPatterns.Add(TPattern);
 //                AllowedSymbols.Add("T");
 //            }
-//            // changes
-//            public void ReshuffleBlockedCells()
-//            {
-//                List<int> blockCellOrigingalPositons = new List<int>();
-//                for (int i = 0; i < Grid.Count; i++)
-//                {
-//                    if (Grid[i].GetSymbol() == "@")
-//                    {
-//                        blockCellOrigingalPositons.Add(i);
-//                        Grid[i] = new Cell(); // all are blanked out
-//                    }
-//                }
-//                int counter = blockCellOrigingalPositons.Count;
-//                for (int i = 0; i < counter; i++)
-//                {
-//                    int position;
-//                    do
-//                    {
-//                        position = Rng.Next(Grid.Count);
-//                    } while (Grid[position].IsEmpty() == false ||
-//                        blockCellOrigingalPositons.Contains(position));
-//                    // could leave out can't go back to a cell that did not contain a cell
-//                    Grid[position] = new BlockedCell();
-//                }
-//            }
-//            // end changes
+
 //            private void LoadPuzzle(string Filename)
 //            {
 //                try
@@ -207,7 +182,7 @@
 //                        if (AmountToAddToScore > 0)
 //                        {
 //                            Score += AmountToAddToScore;
-//                            ReshuffleBlockedCells();
+//                            ReShuffleBlockedCells();
 //                        }
 //                    }
 //                    if (SymbolsLeft == 0)
@@ -219,6 +194,32 @@
 //                DisplayPuzzle();
 //                Console.WriteLine();
 //                return Score;
+//            }
+
+//            private void ReShuffleBlockedCells()
+//            {
+//                List<int> blockedCellOriginalPositions = new List<int>();
+//                for (int i = 0; i < Grid.Count; i++)
+//                {
+//                    if (Grid[i].GetSymbol() == "@")
+//                    {
+//                        blockedCellOriginalPositions.Add(i);
+//                        // remove the  blocked cell
+//                        Grid[i] = new Cell(); // grid at i points to a new blank cell
+//                    }
+//                }
+//                int counter = blockedCellOriginalPositions.Count;
+//                for (int i = 0; i < counter; i++)
+//                {
+//                    int positon;
+//                    do
+//                    {
+//                        // generate a random positon
+//                        positon = Rng.Next(Grid.Count); 
+//                    } while (Grid[positon].IsEmpty() == false
+//                       || blockedCellOriginalPositions.Contains(positon)); // keep looping if not an empty cell
+//                    Grid[positon] = new BlockedCell();
+//                }
 //            }
 
 //            private Cell GetCell(int Row, int Column)
