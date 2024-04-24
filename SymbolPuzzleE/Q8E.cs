@@ -182,13 +182,13 @@
 //                        if (AmountToAddToScore > 0)
 //                        {
 //                            Score += AmountToAddToScore;
+//                            ReshuffleBlockedCells();
 //                        }
 //                    }
 //                    if (SymbolsLeft == 0)
 //                    {
 //                        Finished = true;
 //                    }
-//                    ShuffleRow(5);
 //                }
 //                Console.WriteLine();
 //                DisplayPuzzle();
@@ -196,17 +196,32 @@
 //                return Score;
 //            }
 
-//            private void ShuffleRow(int rowNum)
+//            private void ReshuffleBlockedCells()
 //            {
-//                // calculate the start and end points in grid
-//                int startIndex = (GridSize - rowNum) * GridSize + 1 - 1;
-//                int endIndex = (GridSize - rowNum) * GridSize + GridSize - 1;
-//                Cell first = GetCell(rowNum, 1);
-//                for (int i = startIndex; i < endIndex; i++)
+//                List<int> blockedCellOriginalPositions = new List<int>();
+//                for (int i = 0; i < Grid.Count; i++)
 //                {
-//                    Grid[i] = Grid[i + 1];
+//                    if (Grid[i].GetSymbol() == "@")
+//                    {
+//                        blockedCellOriginalPositions.Add(i);
+//                        // remove the cell
+//                        Grid[i] = new Cell(); // make the grid point to a new empty cell
+//                    }
 //                }
-//                Grid[endIndex] = first;
+//                int count = blockedCellOriginalPositions.Count;
+//                for (int i = 0; i < count; i++)
+//                {
+//                    int position;
+//                    do
+//                    {
+//                        // generate a random empty position
+//                        position = Rng.Next(Grid.Count); // generate random 0 - 24
+//                    } while (Grid[position].IsEmpty() == false || 
+//                              blockedCellOriginalPositions.Contains(position)) ;
+//                    Grid[position] = new BlockedCell();
+//                }
+
+
 //            }
 
 //            private Cell GetCell(int Row, int Column)

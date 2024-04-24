@@ -188,7 +188,7 @@
 //                    {
 //                        Finished = true;
 //                    }
-//                    ShuffleRow(5);
+//                    RotateRow(5);
 //                }
 //                Console.WriteLine();
 //                DisplayPuzzle();
@@ -196,9 +196,8 @@
 //                return Score;
 //            }
 
-//            private void ShuffleRow(int rowNum)
+//            private void RotateRow(int rowNum)
 //            {
-//                // calculate the start and end points in grid
 //                int startIndex = (GridSize - rowNum) * GridSize + 1 - 1;
 //                int endIndex = (GridSize - rowNum) * GridSize + GridSize - 1;
 //                Cell first = GetCell(rowNum, 1);
@@ -207,6 +206,7 @@
 //                    Grid[i] = Grid[i + 1];
 //                }
 //                Grid[endIndex] = first;
+
 //            }
 
 //            private Cell GetCell(int Row, int Column)

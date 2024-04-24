@@ -60,13 +60,14 @@ namespace Puzzle
 
             private void AddDoublePointCells()
             {
+                // Add 5 double point cells at random empty locations
                 for (int i = 0; i < 5; i++)
                 {
                     int pos;
                     do
                     {
                         pos = Rng.Next(Grid.Count);
-                    } while (Grid[pos].IsEmpty() == false);
+                    } while (Grid[pos].IsEmpty() == false) ;
                     Grid[pos] = new DoublePointsCell();
                 }
             }
@@ -236,24 +237,56 @@ namespace Puzzle
                             foreach (var P in AllowedPatterns)
                             {
                                 string CurrentSymbol = GetCell(Row, Column).GetSymbol();
+                                bool doublePointScorePresent = false;
                                 if (P.MatchesPattern(PatternString, CurrentSymbol))
                                 {
-                                    bool doubleScorePresent = false;
 
                                     GetCell(StartRow, StartColumn).AddToNotAllowedSymbols(CurrentSymbol);
-                                    if (GetCell(StartRow, StartColumn).IsDouble())
+                                    if (GetCell(StartRow, StartColumn).IsDouble() == true)
                                     {
-                                        doubleScorePresent = true;
-                                    } // and so on
+                                        doublePointScorePresent = true;
+                                    }
                                     GetCell(StartRow, StartColumn + 1).AddToNotAllowedSymbols(CurrentSymbol);
+                                    if (GetCell(StartRow, StartColumn + 1).IsDouble() == true)
+                                    {
+                                        doublePointScorePresent = true;
+                                    }// and so on
                                     GetCell(StartRow, StartColumn + 2).AddToNotAllowedSymbols(CurrentSymbol);
+                                    if (GetCell(StartRow, StartColumn + 2).IsDouble() == true)
+                                    {
+                                        doublePointScorePresent = true;
+                                    }
                                     GetCell(StartRow - 1, StartColumn + 2).AddToNotAllowedSymbols(CurrentSymbol);
+                                    if (GetCell(StartRow -1 , StartColumn + 2).IsDouble() == true)
+                                    {
+                                        doublePointScorePresent = true;
+                                    }
                                     GetCell(StartRow - 2, StartColumn + 2).AddToNotAllowedSymbols(CurrentSymbol);
+                                    if (GetCell(StartRow - 2, StartColumn + 2).IsDouble() == true)
+                                    {
+                                        doublePointScorePresent = true;
+                                    }
                                     GetCell(StartRow - 2, StartColumn + 1).AddToNotAllowedSymbols(CurrentSymbol);
+                                    if (GetCell(StartRow - 2, StartColumn + 1).IsDouble() == true)
+                                    {
+                                        doublePointScorePresent = true;
+                                    }
                                     GetCell(StartRow - 2, StartColumn).AddToNotAllowedSymbols(CurrentSymbol);
+                                    if (GetCell(StartRow - 2 , StartColumn).IsDouble() == true)
+                                    {
+                                        doublePointScorePresent = true;
+                                    }
                                     GetCell(StartRow - 1, StartColumn).AddToNotAllowedSymbols(CurrentSymbol);
+                                    if (GetCell(StartRow - 1, StartColumn).IsDouble() == true)
+                                    {
+                                        doublePointScorePresent = true;
+                                    }
                                     GetCell(StartRow - 1, StartColumn + 1).AddToNotAllowedSymbols(CurrentSymbol);
-                                    if (doubleScorePresent)
+                                    if (GetCell(StartRow - 1, StartColumn + 1).IsDouble() == true)
+                                    {
+                                        doublePointScorePresent = true;
+                                    }
+                                    if (doublePointScorePresent == true)
                                     {
                                         return 20;
                                     }
@@ -261,8 +294,7 @@ namespace Puzzle
                                     {
                                         return 10;
                                     }
-
-
+                                   
                                 }
                             }
                         }
@@ -356,18 +388,7 @@ namespace Puzzle
                 return PatternSequence;
             }
         }
-        class DoublePointsCell : Cell
-        {
-            public DoublePointsCell() : base()
-            {
-                Symbol = "D";
-            }
 
-            public override bool IsDouble()
-            {
-                return true;
-            }
-        }
         class Cell
         {
             protected string Symbol;
@@ -434,6 +455,19 @@ namespace Puzzle
             }
         }
 
+        class DoublePointsCell : Cell
+        {
+            public DoublePointsCell() : base()
+            {
+                Symbol = "D";
+            }
+
+            public override bool IsDouble()
+            {
+                return true;
+            }
+        }
+
         class BlockedCell : Cell
         {
             public BlockedCell() : base()
@@ -445,6 +479,8 @@ namespace Puzzle
             {
                 return false;
             }
+
+             
         }
     }
 }

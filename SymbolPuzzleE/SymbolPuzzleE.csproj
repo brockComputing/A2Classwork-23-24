@@ -48,6 +48,9 @@
     <Compile Include="Q3E.cs" />
     <Compile Include="Q4E.cs" />
     <Compile Include="Q5E.cs" />
+    <Compile Include="Q8E.cs" />
+    <Compile Include="Q8EA.cs" />
+    <Compile Include="Q9E.cs" />
     <Compile Include="SPE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
