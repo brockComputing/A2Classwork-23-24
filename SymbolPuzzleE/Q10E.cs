@@ -55,21 +55,6 @@ namespace Puzzle
                 AllowedPatterns = new List<Pattern>();
                 AllowedSymbols = new List<string>();
                 LoadPuzzle(Filename);
-                AddDoublePointCells();
-            }
-
-            private void AddDoublePointCells()
-            {
-                // Add 5 doublePointCells at random empty positions
-                for (int i = 0; i < 5; i++)
-                {
-                    int pos;
-                    do
-                    {
-                        pos = Rng.Next(Grid.Count);
-                    } while (Grid[pos].IsEmpty() == false);
-                    Grid[pos] = new DoublePointsCell();
-                }
             }
 
             public Puzzle(int Size, int StartSymbols)
@@ -102,7 +87,6 @@ namespace Puzzle
                 Pattern TPattern = new Pattern("T", "TTT**T**T");
                 AllowedPatterns.Add(TPattern);
                 AllowedSymbols.Add("T");
-                AddDoublePointCells();
             }
 
             private void LoadPuzzle(string Filename)
@@ -160,6 +144,7 @@ namespace Puzzle
                 {
                     DisplayPuzzle();
                     Console.WriteLine("Current score: " + Score);
+                    Console.WriteLine($"You have {SymbolsLeft} symbols left");
                     bool Valid = false;
                     int Row = -1;
                     while (!Valid)
@@ -169,6 +154,11 @@ namespace Puzzle
                         {
                             Row = Convert.ToInt32(Console.ReadLine());
                             Valid = true;
+                            if (Row > GridSize || Row < 1)
+                            {
+                                Console.WriteLine("Out of range");
+                                Valid = false;
+                            }
                         }
                         catch
                         {
@@ -183,6 +173,11 @@ namespace Puzzle
                         {
                             Column = Convert.ToInt32(Console.ReadLine());
                             Valid = true;
+                            if (Column > GridSize || Column < 1)
+                            {
+                                Console.WriteLine("Out of range");
+                                Valid = false;
+                            }
                         }
                         catch
                         {
@@ -191,14 +186,19 @@ namespace Puzzle
                     string Symbol = GetSymbolFromUser();
                     SymbolsLeft -= 1;
                     Cell CurrentCell = GetCell(Row, Column);
-                    if (CurrentCell.CheckSymbolAllowed(Symbol))
+                    if (CurrentCell.CheckSymbolAllowed(Symbol) && CurrentCell.PartOfaPattern() == false)
                     {
                         CurrentCell.ChangeSymbolInCell(Symbol);
                         int AmountToAddToScore = CheckForMatchWithPattern(Row, Column);
                         if (AmountToAddToScore > 0)
                         {
                             Score += AmountToAddToScore;
+                            SymbolsLeft++;
                         }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Its part of a pattern");
                     }
                     if (SymbolsLeft == 0)
                     {
@@ -224,75 +224,50 @@ namespace Puzzle
                     {
                         try
                         {
+                            List<Cell> theNine = new List<Cell>();
                             string PatternString = "";
                             PatternString += GetCell(StartRow, StartColumn).GetSymbol();
+                            theNine.Add(GetCell(StartRow, StartColumn));
                             PatternString += GetCell(StartRow, StartColumn + 1).GetSymbol();
+                            theNine.Add(GetCell(StartRow, StartColumn + 1));
                             PatternString += GetCell(StartRow, StartColumn + 2).GetSymbol();
+                            theNine.Add(GetCell(StartRow, StartColumn + 2));
                             PatternString += GetCell(StartRow - 1, StartColumn + 2).GetSymbol();
+                            theNine.Add(GetCell(StartRow - 1, StartColumn + 2));
                             PatternString += GetCell(StartRow - 2, StartColumn + 2).GetSymbol();
+                            theNine.Add(GetCell(StartRow - 2, StartColumn + 2));
                             PatternString += GetCell(StartRow - 2, StartColumn + 1).GetSymbol();
+                            theNine.Add(GetCell(StartRow - 2, StartColumn + 1));
                             PatternString += GetCell(StartRow - 2, StartColumn).GetSymbol();
+                            theNine.Add(GetCell(StartRow - 2, StartColumn));
                             PatternString += GetCell(StartRow - 1, StartColumn).GetSymbol();
+                            theNine.Add(GetCell(StartRow - 1, StartColumn));
                             PatternString += GetCell(StartRow - 1, StartColumn + 1).GetSymbol();
+                            theNine.Add(GetCell(StartRow - 1, StartColumn + 1));
                             foreach (var P in AllowedPatterns)
                             {
                                 string CurrentSymbol = GetCell(Row, Column).GetSymbol();
-                                bool doublePoints = false;
-                                if (P.MatchesPattern(PatternString, CurrentSymbol))
+                                if (P.MatchesPattern(PatternString, CurrentSymbol,theNine))
                                 {
                                     GetCell(StartRow, StartColumn).AddToNotAllowedSymbols(CurrentSymbol);
-                                    if (GetCell(StartRow, StartColumn).IsDouble() == true)
-                                    {
-                                        doublePoints = true;
-                                    }
+                                    //GetCell(StartRow, StartColumn).SetPartOfaPattern();
                                     GetCell(StartRow, StartColumn + 1).AddToNotAllowedSymbols(CurrentSymbol);
-                                    if (GetCell(StartRow, StartColumn + 1).IsDouble() == true)
-                                    {
-                                        doublePoints = true;
-                                    }
+                                    //GetCell(StartRow, StartColumn + 1).SetPartOfaPattern();
                                     GetCell(StartRow, StartColumn + 2).AddToNotAllowedSymbols(CurrentSymbol);
-                                    if (GetCell(StartRow, StartColumn + 2).IsDouble() == true)
-                                    {
-                                        doublePoints = true;
-                                    }
+                                    //GetCell(StartRow, StartColumn + 2).SetPartOfaPattern();
                                     GetCell(StartRow - 1, StartColumn + 2).AddToNotAllowedSymbols(CurrentSymbol);
-                                    if (GetCell(StartRow - 1, StartColumn + 2).IsDouble() == true)
-                                    {
-                                        doublePoints = true;
-                                    }
+                                    //GetCell(StartRow - 1, StartColumn + 2).SetPartOfaPattern();
                                     GetCell(StartRow - 2, StartColumn + 2).AddToNotAllowedSymbols(CurrentSymbol);
-                                    if (GetCell(StartRow - 2, StartColumn + 2).IsDouble() == true)
-                                    {
-                                        doublePoints = true;
-                                    }
+                                    //GetCell(StartRow - 2, StartColumn + 2).SetPartOfaPattern();
                                     GetCell(StartRow - 2, StartColumn + 1).AddToNotAllowedSymbols(CurrentSymbol);
-                                    if (GetCell(StartRow - 2, StartColumn + 1).IsDouble() == true)
-                                    {
-                                        doublePoints = true;
-                                    }
+                                    // GetCell(StartRow - 2, StartColumn + 1).SetPartOfaPattern();
                                     GetCell(StartRow - 2, StartColumn).AddToNotAllowedSymbols(CurrentSymbol);
-                                    if (GetCell(StartRow - 2, StartColumn).IsDouble() == true)
-                                    {
-                                        doublePoints = true;
-                                    }
+                                    //GetCell(StartRow - 2, StartColumn).SetPartOfaPattern();
                                     GetCell(StartRow - 1, StartColumn).AddToNotAllowedSymbols(CurrentSymbol);
-                                    if (GetCell(StartRow - 1, StartColumn).IsDouble() == true)
-                                    {
-                                        doublePoints = true;
-                                    }
+                                    //GetCell(StartRow - 1, StartColumn).SetPartOfaPattern();
                                     GetCell(StartRow - 1, StartColumn + 1).AddToNotAllowedSymbols(CurrentSymbol);
-                                    if (GetCell(StartRow - 1, StartColumn + 1).IsDouble() == true)
-                                    {
-                                        doublePoints = true;
-                                    }
-                                    if (doublePoints == true)
-                                    {
-                                        return 20;
-                                    }
-                                    else
-                                    {
-                                        return 10;
-                                    }
+                                    //GetCell(StartRow - 1, StartColumn + 1).SetPartOfaPattern();
+                                    return 10;
                                 }
                             }
                         }
@@ -365,7 +340,7 @@ namespace Puzzle
                 PatternSequence = PatternString;
             }
 
-            public virtual bool MatchesPattern(string PatternString, string SymbolPlaced)
+            public virtual bool MatchesPattern(string PatternString, string SymbolPlaced, List<Cell> theNine)
             {
                 if (SymbolPlaced != Symbol)
                 {
@@ -377,6 +352,15 @@ namespace Puzzle
                     {
                         return false;
                     }
+                }
+                int count = 0;
+                foreach (var item in PatternSequence) // get working for next lesson
+                {
+                    if (item.ToString() == SymbolPlaced)
+                    {
+                        theNine[count].SetPartOfaPattern();
+                    }
+                    count++;
                 }
                 return true;
             }
@@ -391,11 +375,22 @@ namespace Puzzle
         {
             protected string Symbol;
             private List<string> SymbolsNotAllowed;
-
+            private bool partOfaPattern;
             public Cell()
             {
                 Symbol = "";
                 SymbolsNotAllowed = new List<string>();
+                partOfaPattern = false;
+            }
+
+            public void SetPartOfaPattern()
+            {
+                partOfaPattern = true;
+            }
+
+            public bool PartOfaPattern()
+            {
+                return partOfaPattern;
             }
 
             public virtual string GetSymbol()
@@ -447,24 +442,6 @@ namespace Puzzle
             public virtual void UpdateCell()
             {
             }
-
-            public virtual bool IsDouble()
-            {
-                return false;
-            }
-        }
-
-        class DoublePointsCell : Cell
-        {
-            public DoublePointsCell() : base()
-            {
-                Symbol = "D";
-            }
-            public override bool IsDouble()
-            {
-                return true;
-            }
-
         }
 
         class BlockedCell : Cell

@@ -60,14 +60,16 @@
 
 //            private void AddDoublePointCells()
 //            {
-//                // Add 5 double point cells at random empty locations
+//                // add 5 doublepointcell in random empty positions
 //                for (int i = 0; i < 5; i++)
 //                {
 //                    int pos;
 //                    do
 //                    {
+//                        // get a random position
 //                        pos = Rng.Next(Grid.Count);
-//                    } while (Grid[pos].IsEmpty() == false) ;
+//                    } while (Grid[pos].IsEmpty() == false);
+//                    // add the doublepointcell to grid at position
 //                    Grid[pos] = new DoublePointsCell();
 //                }
 //            }
@@ -237,56 +239,55 @@
 //                            foreach (var P in AllowedPatterns)
 //                            {
 //                                string CurrentSymbol = GetCell(Row, Column).GetSymbol();
-//                                bool doublePointScorePresent = false;
+//                                bool itsADouble = false;
 //                                if (P.MatchesPattern(PatternString, CurrentSymbol))
 //                                {
-
 //                                    GetCell(StartRow, StartColumn).AddToNotAllowedSymbols(CurrentSymbol);
 //                                    if (GetCell(StartRow, StartColumn).IsDouble() == true)
 //                                    {
-//                                        doublePointScorePresent = true;
+//                                        itsADouble = true;
 //                                    }
 //                                    GetCell(StartRow, StartColumn + 1).AddToNotAllowedSymbols(CurrentSymbol);
 //                                    if (GetCell(StartRow, StartColumn + 1).IsDouble() == true)
 //                                    {
-//                                        doublePointScorePresent = true;
-//                                    }// and so on
+//                                        itsADouble = true;
+//                                    }
 //                                    GetCell(StartRow, StartColumn + 2).AddToNotAllowedSymbols(CurrentSymbol);
 //                                    if (GetCell(StartRow, StartColumn + 2).IsDouble() == true)
 //                                    {
-//                                        doublePointScorePresent = true;
+//                                        itsADouble = true;
 //                                    }
 //                                    GetCell(StartRow - 1, StartColumn + 2).AddToNotAllowedSymbols(CurrentSymbol);
-//                                    if (GetCell(StartRow -1 , StartColumn + 2).IsDouble() == true)
+//                                    if (GetCell(StartRow - 1, StartColumn + 2).IsDouble() == true)
 //                                    {
-//                                        doublePointScorePresent = true;
+//                                        itsADouble = true;
 //                                    }
 //                                    GetCell(StartRow - 2, StartColumn + 2).AddToNotAllowedSymbols(CurrentSymbol);
 //                                    if (GetCell(StartRow - 2, StartColumn + 2).IsDouble() == true)
 //                                    {
-//                                        doublePointScorePresent = true;
+//                                        itsADouble = true;
 //                                    }
 //                                    GetCell(StartRow - 2, StartColumn + 1).AddToNotAllowedSymbols(CurrentSymbol);
 //                                    if (GetCell(StartRow - 2, StartColumn + 1).IsDouble() == true)
 //                                    {
-//                                        doublePointScorePresent = true;
+//                                        itsADouble = true;
 //                                    }
 //                                    GetCell(StartRow - 2, StartColumn).AddToNotAllowedSymbols(CurrentSymbol);
-//                                    if (GetCell(StartRow - 2 , StartColumn).IsDouble() == true)
+//                                    if (GetCell(StartRow - 2, StartColumn).IsDouble() == true)
 //                                    {
-//                                        doublePointScorePresent = true;
+//                                        itsADouble = true;
 //                                    }
 //                                    GetCell(StartRow - 1, StartColumn).AddToNotAllowedSymbols(CurrentSymbol);
 //                                    if (GetCell(StartRow - 1, StartColumn).IsDouble() == true)
 //                                    {
-//                                        doublePointScorePresent = true;
+//                                        itsADouble = true;
 //                                    }
 //                                    GetCell(StartRow - 1, StartColumn + 1).AddToNotAllowedSymbols(CurrentSymbol);
 //                                    if (GetCell(StartRow - 1, StartColumn + 1).IsDouble() == true)
 //                                    {
-//                                        doublePointScorePresent = true;
+//                                        itsADouble = true;
 //                                    }
-//                                    if (doublePointScorePresent == true)
+//                                    if (itsADouble == true)
 //                                    {
 //                                        return 20;
 //                                    }
@@ -294,7 +295,6 @@
 //                                    {
 //                                        return 10;
 //                                    }
-                                   
 //                                }
 //                            }
 //                        }
@@ -399,10 +399,6 @@
 //                Symbol = "";
 //                SymbolsNotAllowed = new List<string>();
 //            }
-//            public virtual bool IsDouble()
-//            {
-//                return false;
-//            }
 
 //            public virtual string GetSymbol()
 //            {
@@ -453,6 +449,10 @@
 //            public virtual void UpdateCell()
 //            {
 //            }
+//            public virtual bool IsDouble()
+//            {
+//                return false;
+//            }
 //        }
 
 //        class DoublePointsCell : Cell
@@ -461,7 +461,6 @@
 //            {
 //                Symbol = "D";
 //            }
-
 //            public override bool IsDouble()
 //            {
 //                return true;
@@ -479,8 +478,6 @@
 //            {
 //                return false;
 //            }
-
-             
 //        }
 //    }
 //}
