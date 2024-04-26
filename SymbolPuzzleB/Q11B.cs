@@ -153,10 +153,6 @@ namespace Puzzle
                         {
                             Row = Convert.ToInt32(Console.ReadLine());
                             Valid = true;
-                            if (Row < 1 || Row > GridSize)
-                            {
-                                Console.WriteLine("row is out out of range");
-                            }
                         }
                         catch
                         {
@@ -171,10 +167,6 @@ namespace Puzzle
                         {
                             Column = Convert.ToInt32(Console.ReadLine());
                             Valid = true;
-                            if (Column < 1 || Column > GridSize)
-                            {
-                                Console.WriteLine("column is out out of range");
-                            }
                         }
                         catch
                         {
@@ -183,7 +175,7 @@ namespace Puzzle
                     string Symbol = GetSymbolFromUser();
                     SymbolsLeft -= 1;
                     Cell CurrentCell = GetCell(Row, Column);
-                    if (CurrentCell.CheckSymbolAllowed(Symbol) && CurrentCell.GetPartOfPattern() == false)
+                    if (CurrentCell.CheckSymbolAllowed(Symbol))
                     {
                         CurrentCell.ChangeSymbolInCell(Symbol);
                         int AmountToAddToScore = CheckForMatchWithPattern(Row, Column);
@@ -191,10 +183,6 @@ namespace Puzzle
                         {
                             Score += AmountToAddToScore;
                         }
-                    }
-                    else
-                    {
-                        Console.WriteLine("its part of a pattern");
                     }
                     if (SymbolsLeft == 0)
                     {
@@ -236,23 +224,14 @@ namespace Puzzle
                                 if (P.MatchesPattern(PatternString, CurrentSymbol))
                                 {
                                     GetCell(StartRow, StartColumn).AddToNotAllowedSymbols(CurrentSymbol);
-                                    GetCell(StartRow, StartColumn).SetPartOfPattern();
                                     GetCell(StartRow, StartColumn + 1).AddToNotAllowedSymbols(CurrentSymbol);
-                                    GetCell(StartRow, StartColumn + 1).SetPartOfPattern();
                                     GetCell(StartRow, StartColumn + 2).AddToNotAllowedSymbols(CurrentSymbol);
-                                    GetCell(StartRow, StartColumn + 2).SetPartOfPattern();
                                     GetCell(StartRow - 1, StartColumn + 2).AddToNotAllowedSymbols(CurrentSymbol);
-                                    GetCell(StartRow - 1, StartColumn + 2).SetPartOfPattern();
                                     GetCell(StartRow - 2, StartColumn + 2).AddToNotAllowedSymbols(CurrentSymbol);
-                                    GetCell(StartRow - 2, StartColumn + 2).SetPartOfPattern();
                                     GetCell(StartRow - 2, StartColumn + 1).AddToNotAllowedSymbols(CurrentSymbol);
-                                    GetCell(StartRow - 2, StartColumn + 1).SetPartOfPattern();
                                     GetCell(StartRow - 2, StartColumn).AddToNotAllowedSymbols(CurrentSymbol);
-                                    GetCell(StartRow - 2, StartColumn).SetPartOfPattern();
                                     GetCell(StartRow - 1, StartColumn).AddToNotAllowedSymbols(CurrentSymbol);
-                                    GetCell(StartRow - 1, StartColumn).SetPartOfPattern();
                                     GetCell(StartRow - 1, StartColumn + 1).AddToNotAllowedSymbols(CurrentSymbol);
-                                    GetCell(StartRow - 1, StartColumn + 1).SetPartOfPattern();
                                     return 10;
                                 }
                             }
@@ -352,20 +331,13 @@ namespace Puzzle
         {
             protected string Symbol;
             private List<string> SymbolsNotAllowed;
-            private bool partOfPattern;
+
             public Cell()
             {
                 Symbol = "";
                 SymbolsNotAllowed = new List<string>();
             }
-            public void SetPartOfPattern()
-            {
-                partOfPattern = true;
-            }
-            public bool GetPartOfPattern()
-            {
-                return partOfPattern;
-            }
+
             public virtual string GetSymbol()
             {
                 if (IsEmpty())

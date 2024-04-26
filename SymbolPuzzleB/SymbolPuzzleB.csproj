@@ -52,7 +52,8 @@
     <Compile Include="Q8B.cs" />
     <Compile Include="Q8BB.cs" />
     <Compile Include="Q9B.cs" />
-    <Compile Include="Q10.cs" />
+    <Compile Include="Q10B.cs" />
+    <Compile Include="Q11B.cs" />
     <Compile Include="SPB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

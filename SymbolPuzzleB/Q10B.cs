@@ -153,10 +153,9 @@
 //                        {
 //                            Row = Convert.ToInt32(Console.ReadLine());
 //                            Valid = true;
-//                            if (Row > GridSize || Row < 1)
+//                            if (Row < 1 || Row > GridSize)
 //                            {
-//                                Valid = false;
-//                                Console.WriteLine("Row is Out of Bounds");
+//                                Console.WriteLine("row is out out of range");
 //                            }
 //                        }
 //                        catch
@@ -172,10 +171,9 @@
 //                        {
 //                            Column = Convert.ToInt32(Console.ReadLine());
 //                            Valid = true;
-//                            if (Column > GridSize || Column < 1)
+//                            if (Column < 1 || Column > GridSize)
 //                            {
-//                                Valid = false;
-//                                Console.WriteLine("Column is Out of Bounds");
+//                                Console.WriteLine("column is out out of range");
 //                            }
 //                        }
 //                        catch
@@ -196,7 +194,7 @@
 //                    }
 //                    else
 //                    {
-//                        Console.WriteLine("Current cell is part of a pattern");
+//                        Console.WriteLine("its part of a pattern");
 //                    }
 //                    if (SymbolsLeft == 0)
 //                    {
@@ -237,55 +235,52 @@
 //                                string CurrentSymbol = GetCell(Row, Column).GetSymbol();
 //                                if (P.MatchesPattern(PatternString, CurrentSymbol))
 //                                {
-//                                    string pattern = P.GetPatternSequence();
 //                                    GetCell(StartRow, StartColumn).AddToNotAllowedSymbols(CurrentSymbol);
-//                                    if (GetCell(StartRow, StartColumn).GetSymbol() == pattern[0].ToString())
+//                                    if (CurrentSymbol == P.GetPatternSequence()[0].ToString())
 //                                    {
 //                                        GetCell(StartRow, StartColumn).SetPartOfPattern();
 //                                    }
 //                                    GetCell(StartRow, StartColumn + 1).AddToNotAllowedSymbols(CurrentSymbol);
-//                                    if (GetCell(StartRow, StartColumn + 1).GetSymbol() == pattern[1].ToString())
+//                                    if (CurrentSymbol == P.GetPatternSequence()[1].ToString())
 //                                    {
-//                                        GetCell(StartRow, StartColumn + 1).SetPartOfPattern();
+//                                        GetCell(StartRow, StartColumn +1).SetPartOfPattern();
 //                                    }
 //                                    GetCell(StartRow, StartColumn + 2).AddToNotAllowedSymbols(CurrentSymbol);
-//                                    if (GetCell(StartRow, StartColumn + 2).GetSymbol() == pattern[2].ToString())
+//                                    if (CurrentSymbol == P.GetPatternSequence()[2].ToString())
 //                                    {
 //                                        GetCell(StartRow, StartColumn + 2).SetPartOfPattern();
 //                                    }
+
 //                                    GetCell(StartRow - 1, StartColumn + 2).AddToNotAllowedSymbols(CurrentSymbol);
-//                                    if (GetCell(StartRow - 1, StartColumn + 2).GetSymbol() == pattern[3].ToString())
+//                                    if (CurrentSymbol == P.GetPatternSequence()[3].ToString())
 //                                    {
-//                                        GetCell(StartRow - 1, StartColumn + 2).SetPartOfPattern();
+//                                        GetCell(StartRow -1, StartColumn + 2).SetPartOfPattern();
 //                                    }
 //                                    GetCell(StartRow - 2, StartColumn + 2).AddToNotAllowedSymbols(CurrentSymbol);
-//                                    if (GetCell(StartRow - 2, StartColumn + 2).GetSymbol() == pattern[4].ToString())
+//                                    if (CurrentSymbol == P.GetPatternSequence()[4].ToString())
 //                                    {
 //                                        GetCell(StartRow - 2, StartColumn + 2).SetPartOfPattern();
 //                                    }
 //                                    GetCell(StartRow - 2, StartColumn + 1).AddToNotAllowedSymbols(CurrentSymbol);
-//                                    if (GetCell(StartRow - 2, StartColumn + 1).GetSymbol() == pattern[5].ToString())
+//                                    if (CurrentSymbol == P.GetPatternSequence()[5].ToString())
 //                                    {
 //                                        GetCell(StartRow - 2, StartColumn + 1).SetPartOfPattern();
 //                                    }
 //                                    GetCell(StartRow - 2, StartColumn).AddToNotAllowedSymbols(CurrentSymbol);
-//                                    if (GetCell(StartRow - 2, StartColumn).GetSymbol() == pattern[6].ToString())
+//                                    if (CurrentSymbol == P.GetPatternSequence()[6].ToString())
 //                                    {
 //                                        GetCell(StartRow - 2, StartColumn).SetPartOfPattern();
 //                                    }
-
 //                                    GetCell(StartRow - 1, StartColumn).AddToNotAllowedSymbols(CurrentSymbol);
-//                                    if (GetCell(StartRow - 1, StartColumn).GetSymbol() == pattern[7].ToString())
+//                                    if (CurrentSymbol == P.GetPatternSequence()[7].ToString())
 //                                    {
 //                                        GetCell(StartRow - 1, StartColumn).SetPartOfPattern();
 //                                    }
-
 //                                    GetCell(StartRow - 1, StartColumn + 1).AddToNotAllowedSymbols(CurrentSymbol);
-//                                    if (GetCell(StartRow - 1, StartColumn + 1).GetSymbol() == pattern[8].ToString())
+//                                    if (CurrentSymbol == P.GetPatternSequence()[8].ToString())
 //                                    {
 //                                        GetCell(StartRow - 1, StartColumn + 1).SetPartOfPattern();
 //                                    }
-
 //                                    return 10;
 //                                }
 //                            }
@@ -385,25 +380,20 @@
 //        {
 //            protected string Symbol;
 //            private List<string> SymbolsNotAllowed;
-//            private bool PartOfPattern;
-
+//            private bool partOfPattern;
 //            public Cell()
 //            {
 //                Symbol = "";
 //                SymbolsNotAllowed = new List<string>();
-
 //            }
-
-//            public bool GetPartOfPattern()
-//            {
-//                return PartOfPattern;
-//            }
-
 //            public void SetPartOfPattern()
 //            {
-//                PartOfPattern = true;
+//                partOfPattern = true;
 //            }
-
+//            public bool GetPartOfPattern()
+//            {
+//                return partOfPattern;
+//            }
 //            public virtual string GetSymbol()
 //            {
 //                if (IsEmpty())
