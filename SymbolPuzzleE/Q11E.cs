@@ -48,15 +48,14 @@ namespace Puzzle
             private List<Cell> Grid;
             private List<Pattern> AllowedPatterns;
             private List<string> AllowedSymbols;
-            bool leverUsed;
-
+            private bool leverUsed;
             public Puzzle(string Filename)
             {
+                leverUsed = false;
                 Grid = new List<Cell>();
                 AllowedPatterns = new List<Pattern>();
                 AllowedSymbols = new List<string>();
                 LoadPuzzle(Filename);
-                leverUsed = false;
             }
 
             public Puzzle(int Size, int StartSymbols)
@@ -237,10 +236,13 @@ namespace Puzzle
                                     GetCell(StartRow - 1, StartColumn + 1).AddToNotAllowedSymbols(CurrentSymbol);
                                     if (leverUsed == false)
                                     {
-                                        Console.WriteLine("would you like to use the lever? y/n");
+                                        Console.WriteLine("would you like to use the lever? (y/n)");
                                         string ans = Console.ReadLine();
-                                        DoLever();
-                                        leverUsed = true;
+                                        if (ans.ToLower() == "y")
+                                        {
+                                            DoLever();
+                                            leverUsed = true;
+                                        }
                                     }
                                     return 10;
                                 }
@@ -256,25 +258,24 @@ namespace Puzzle
 
             private void DoLever()
             {
-                Cell selectedCell;
-                int row = 5, col = 3;
+                //ask the user for a row and col
+                int row, col;
                 do
+               // keep asking if the cell is not blocked
                 {
-                    Console.WriteLine("Enter the row");
+                    Console.WriteLine("enter the row");
                     row = Convert.ToInt32(Console.ReadLine());
-                    Console.WriteLine("Enter a column");
+                    Console.WriteLine("enter the col");
                     col = Convert.ToInt32(Console.ReadLine());
-                    selectedCell = GetCell(row, col);
-                    // if not a blocked cell inform the user
-                    if (selectedCell.GetSymbol() != "@")
+                    if (GetCell(row,col).GetSymbol() != "@")
                     {
-                        Console.WriteLine("you did not select a blocked cell");
+                        Console.WriteLine("its not a blocked cell");
                     }
-                } while (selectedCell.GetSymbol() != "@");
+                } while (GetCell(row, col).GetSymbol() != "@");
+                // change the blocked cell.
                 Grid[(GridSize - row) * GridSize + col - 1] = new Cell();
-               
             }
-            
+
             private string GetSymbolFromUser()
             {
                 string Symbol = "";

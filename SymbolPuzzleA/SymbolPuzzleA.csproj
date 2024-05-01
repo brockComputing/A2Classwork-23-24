@@ -54,6 +54,7 @@
     <Compile Include="Q9A.cs" />
     <Compile Include="Q10A.cs" />
     <Compile Include="Q11A.cs" />
+    <Compile Include="SPA - Copy.cs" />
     <Compile Include="SPA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -48,17 +48,19 @@ namespace Puzzle
             private List<Cell> Grid;
             private List<Pattern> AllowedPatterns;
             private List<string> AllowedSymbols;
-
+            bool leverUsed;
             public Puzzle(string Filename)
             {
                 Grid = new List<Cell>();
                 AllowedPatterns = new List<Pattern>();
                 AllowedSymbols = new List<string>();
                 LoadPuzzle(Filename);
+                leverUsed = false;
             }
 
             public Puzzle(int Size, int StartSymbols)
             {
+                leverUsed = false;
                 Score = 0;
                 SymbolsLeft = StartSymbols;
                 GridSize = Size;
@@ -232,6 +234,16 @@ namespace Puzzle
                                     GetCell(StartRow - 2, StartColumn).AddToNotAllowedSymbols(CurrentSymbol);
                                     GetCell(StartRow - 1, StartColumn).AddToNotAllowedSymbols(CurrentSymbol);
                                     GetCell(StartRow - 1, StartColumn + 1).AddToNotAllowedSymbols(CurrentSymbol);
+                                    if (leverUsed == false)
+                                    {
+                                        Console.WriteLine("would you like to use the lever? y/n");
+                                        string ans = Console.ReadLine();
+                                        if(ans == "y")
+                                        {
+                                            DoLever();
+                                            leverUsed = true;
+                                        }
+                                    }
                                     return 10;
                                 }
                             }
@@ -242,6 +254,25 @@ namespace Puzzle
                     }
                 }
                 return 0;
+            }
+
+            private void DoLever()
+            {
+                int row = 0, col = 0;
+
+                do
+                {
+                    Console.WriteLine("Enter the row");
+                    row = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("Enter a column");
+                    col = Convert.ToInt32(Console.ReadLine());
+                    // check if blocked cell
+                    if (GetCell(row, col).GetSymbol() != "@")
+                    {
+                        Console.WriteLine("enter a blocked cell");
+                    }
+                } while (GetCell(row,col).GetSymbol() != "@");
+                Grid[(GridSize - row) * GridSize + col - 1] = new Cell();
             }
 
             private string GetSymbolFromUser()

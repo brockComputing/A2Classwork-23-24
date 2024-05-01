@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Q11E.cs" />
     <Compile Include="Q1E.cs" />
     <Compile Include="Q2E.cs" />
     <Compile Include="Q3E.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="Q8EA.cs" />
     <Compile Include="Q9E.cs" />
     <Compile Include="Q10E.cs" />
+    <Compile Include="SPE - Copy.cs" />
     <Compile Include="SPE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
