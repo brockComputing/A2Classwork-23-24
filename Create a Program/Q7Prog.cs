@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Create_a_Program
 {
-    internal class Q7
+    internal class Q7Prog
     {
         static void Main(string[] args)
         {
